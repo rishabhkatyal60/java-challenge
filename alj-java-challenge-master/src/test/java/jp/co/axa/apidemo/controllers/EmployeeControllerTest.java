@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import jp.co.axa.apidemo.ApiDemoApplication;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,11 +64,11 @@ public class EmployeeControllerTest {
     @Test
     public void testUpdateEmployee() {
         int id = 1;
-        Employee employee = restTemplate.getForObject(getRootUrl() + "/employees/" + id, Employee.class);
+        Employee employee = restTemplate.getForObject(getRootUrl() + "/update", Employee.class);
         employee.setName("Andre");
         employee.setSalary(10000);
-        restTemplate.put(getRootUrl() + "/employees/" + id, employee);
-        Employee updatedEmployee = restTemplate.getForObject(getRootUrl() + "/employees/" + id, Employee.class);
+        restTemplate.put(getRootUrl() + "/update" + id, employee);
+        Employee updatedEmployee = restTemplate.getForObject(getRootUrl() + "/update" + id, Employee.class);
         assertNotNull(updatedEmployee);
     }
 

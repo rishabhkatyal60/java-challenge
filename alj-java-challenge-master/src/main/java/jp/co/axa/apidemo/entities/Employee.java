@@ -8,13 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name="EMPLOYEE")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employee {
+public class Employee implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

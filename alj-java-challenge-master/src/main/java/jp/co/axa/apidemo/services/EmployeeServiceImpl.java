@@ -23,8 +23,8 @@ public class EmployeeServiceImpl implements EmployeeService{
         return employees;
     }
 
-    public Employee getEmployee(Long employeeId) {
-        Optional<Employee> optEmp = employeeRepository.findById(employeeId);
+    public Employee getEmployee(Long id) {
+        Optional<Employee> optEmp = employeeRepository.findById(id);
         return optEmp.get();
     }
 
@@ -32,11 +32,13 @@ public class EmployeeServiceImpl implements EmployeeService{
         employeeRepository.save(employee);
     }
 
-    public void deleteEmployee(Long employeeId){
-        employeeRepository.deleteById(employeeId);
+    public void deleteEmployee(Long id){
+        employeeRepository.deleteById(id);
     }
 
-    public void updateEmployee(Employee employee) {
+    public Employee updateEmployee(Employee employee) {
         employeeRepository.save(employee);
+        Optional<Employee> optEmp = employeeRepository.findById(employee.getId());
+        return optEmp.get();
     }
 }
