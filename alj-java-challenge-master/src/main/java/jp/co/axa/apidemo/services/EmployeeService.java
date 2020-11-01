@@ -6,13 +6,40 @@ import java.util.List;
 
 public interface EmployeeService {
 
-    public List<Employee> retrieveEmployees();
+    /**
+     * retrieve the information for all employees.
+     *
+     * @return List<Employee>. Information of all employees
+     */
+    List<Employee> retrieveEmployees();
 
-    public Employee getEmployee(Long id);
+    /**
+     * retrieve the information of an employee by employee id.
+     *
+     * @param id employee id
+     * @return Employee Information of an employee
+     */
+    Employee getEmployee(Long id);
 
-    public void saveEmployee(Employee employee);
+    /**
+     * save an employee to the database.
+     *
+     * @param employee Information of an employee
+     */
+    void saveEmployee(Employee employee);
 
-    public void deleteEmployee(Long id);
+    /**
+     * delete the information of an employee by employee id.
+     *
+     * @param id employee id
+     */
+    void deleteEmployee(Long id);
 
-    public Employee updateEmployee(Employee employee);
+    /**
+     * Update an employee's information to the database.
+     *
+     * @param employee Information of an employee
+     * @return employee Updated Information of an employee
+     */
+    Employee updateEmployee(Employee employee);
 }

@@ -16,15 +16,19 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class EmployeeController {
 
+    /**
+     * Logger to identify whether Redis Caching is used or not.
+     */
     private final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
     @Autowired
     private EmployeeService employeeService;
 
-    public void setEmployeeService(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
-
+    /**
+     * Controller to retrieve the information for all employees.
+     *
+     * @return list of all employees
+     */
     @GetMapping("/employees")
     public List<Employee> getEmployees() {
         logger.debug(" >> EmployeeController : /employees GET call :");
@@ -32,6 +36,12 @@ public class EmployeeController {
         return employees;
     }
 
+    /**
+     * Controller to retrieve the information of the employee by id .
+     *
+     * @param id employee id
+     * @return employee information using employee id
+     */
     @GetMapping("/employees/{id}")
     @Cacheable(value = "employees",key = "#id")
     public Employee getEmployee(@PathVariable(name="id")long id) {
@@ -39,6 +49,12 @@ public class EmployeeController {
         return employeeService.getEmployee(id);
     }
 
+    /**
+     * Controller to create a new employee.
+     *
+     * @param employee employee
+     *
+     */
     @PostMapping("/employees")
     public void saveEmployee(Employee employee){
         logger.debug(" >> EmployeeController : /employees POST call :",employee.toString());
@@ -46,6 +62,12 @@ public class EmployeeController {
         System.out.println("Employee Saved Successfully");
     }
 
+    /**
+     * Controller to delete an employee.
+     *
+     * @param id employee id
+     *
+     */
     @DeleteMapping("/employees/{id}")
     @CacheEvict(value = "employees",allEntries = false,key = "#id")
     public void deleteEmployee(@PathVariable(name="id")long id){
@@ -55,6 +77,12 @@ public class EmployeeController {
         System.out.println("Employee Deleted Successfully");
     }
 
+    /**
+     * Controller to update an employee's information.
+     *
+     * @param employee employee
+     *
+     */
     @PutMapping("/update")
     @CachePut(value = "employees",key = "#employee.id")
     public Employee updateEmployee(@RequestBody Employee employee) {

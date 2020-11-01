@@ -17,16 +17,28 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Employee implements Serializable {
 
+    /**
+     * id of the employee.
+     */
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * name of the employee.
+     */
     @Column(name="EMPLOYEE_NAME")
     private String name;
 
+    /**
+     * salary of the employee.
+     */
     @Column(name="EMPLOYEE_SALARY")
     private Integer salary;
 
+    /**
+     * department of the employee.
+     */
     @Column(name="DEPARTMENT")
     private String department;
 
