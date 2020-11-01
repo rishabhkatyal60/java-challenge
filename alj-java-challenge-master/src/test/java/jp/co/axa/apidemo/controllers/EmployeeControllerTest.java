@@ -33,6 +33,9 @@ public class EmployeeControllerTest {
         return "http://localhost:"+port+"/api/v1";
     }
 
+    /**
+     * Test for the create Employee Controller.
+     */
     @Test
     public void testCreateEmployee() {
         Employee employee = new Employee();
@@ -44,6 +47,9 @@ public class EmployeeControllerTest {
         assertEquals("200 OK",postResponse.getStatusCode().toString());
     }
 
+    /**
+     * Test for the retrieve all employees information Controller.
+     */
     @Test
     public void testGetAllEmployees() {
         HttpHeaders headers = new HttpHeaders();
@@ -54,6 +60,9 @@ public class EmployeeControllerTest {
         assertNotNull(response.getBody());
     }
 
+    /**
+     * Test for the retrieve an employee information by id Controller.
+     */
     @Test
     public void testGetEmployeeById() {
         Employee employee = restTemplate.getForObject(getRootUrl() + "/employees/1", Employee.class);
@@ -72,6 +81,9 @@ public class EmployeeControllerTest {
         assertNotNull(updatedEmployee);
     }
 
+    /**
+     * Test the Controller to delete an employee's information.
+     */
     @Test
     public void testDeleteEmployee() {
         int id = 2;
