@@ -42,3 +42,38 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 - Appropriate usage of packages
 - Is the application running as expected
 - No performance issues
+
+
+#### Redis Caching
+- Download Redis: http://download.redis.io/releases/redis-6.0.8.tar.gz
+- tar xzf redis-6.0.8.tar.gz
+- Go to redis-6.0.8
+- Run "make"
+- Click on src/redis-server
+- Click on src/redis-cli
+- Added the Logger to distinguish whether the call is made to the DB or to the Redis.
+- Implemented Caching for 
+	* Get Employee By ID
+	* Delete Employee By ID
+	* Update Employee By ID 
+	
+This will connect the Application to the Redis port 6379 by default.
+ 
+ 
+#### Lombok Changes
+- Removed the @Getter & @Setter Annotation from jp.co.axa.apidemo.entities.Employee.java
+- Added Lombok's @Data at the Class Level, @NoArgsConstructor, @AllArgsConstructor.
+- @Data Annotation bundles @ToString, @EqualsAndHashCode, @Getter on all Fields, 
+  @Setter on all non final Fields and @RequiredArgsConstructor
+      
+      
+#### Controller UTs
+- Added the UTs for all the Controllers.
+
+
+#### Java Documentation
+- Added the Java Documentation to all classes and UTs.
+
+
+#### Performance Improvement
+- After implementation of the cache there is improvement in response time.
